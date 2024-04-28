@@ -1,3 +1,3 @@
 # Lesunk Github Page
 
-This is page owned by Lesunk
+This is a bio link page for Lesunk

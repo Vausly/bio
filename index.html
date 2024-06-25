@@ -333,25 +333,36 @@
 
     <!-- Alert Toaster -->
     <style>
-    #alert-toaster {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-      background-color: #f0ad4e;
-      padding: 15px 20px;
-      border-radius: 5px;
-      color: white;
-      opacity: 1;
-      transition: opacity 0.7s ease-in-out;
-    }
+        /* Style dari kode open source, disesuaikan dengan alert toaster */
+        #alert-toaster {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 9999;
+          background-color: #dff0d8; /* Warna latar belakang info */
+          padding: 15px 20px;
+          border-radius: 5px;
+          color: #3c763d; /* Warna teks info */
+          opacity: 1;
+          transition: opacity 0.7s ease-in-out;
+          border: 1px solid #ddd; /* Garis pada kotak alert */
+        }
+    
+        #alert-toaster.hide {
+          opacity: 0;
+        }
+    
+        #alert-toaster .close-button {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+        }
+      </style>
 
-    #alert-toaster.hide {
-      opacity: 0;
-    }
-  </style>
-
-    <div id="alert-toaster">Lesunk telah direbrand menjadi Vausly!</div>
+    <div id="alert-toaster">Lesunk telah direbrand menjadi Vausly!
+        <span class="close-button" onclick="hideAlertToaster()">X</span>
+    </div>
 
   <script>
     const queryString = window.location.search;
@@ -361,7 +372,7 @@
       setTimeout(() => {
         const alertToaster = document.getElementById('alert-toaster');
         alertToaster.classList.add('hide');
-      }, 7000); // 7 detik
+      }, 5000); // 5 detik
     }
   </script>
     

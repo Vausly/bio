@@ -12,51 +12,6 @@
     <title>Linktree | Vausly (formely Lesunk)</title>
     <link rel="preconnect" href="https://fonts.gstatic.com/">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-
-<style>
-        /* Styling for the toast notification */
-        #toast {
-            visibility: hidden;
-            min-width: 250px;
-            margin-left: -125px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 2px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1;
-            left: 50%;
-            bottom: 30px;
-            font-size: 17px;
-        }
-
-        #toast.show {
-            visibility: visible;
-            -webkit-animation: fadein 0.5s, fadeout 0.5s 6.5s;
-            animation: fadein 0.5s, fadeout 0.5s 6.5s;
-        }
-
-        @-webkit-keyframes fadein {
-            from {bottom: 0; opacity: 0;} 
-            to {bottom: 30px; opacity: 1;}
-        }
-
-        @keyframes fadein {
-            from {bottom: 0; opacity: 0;}
-            to {bottom: 30px; opacity: 1;}
-        }
-
-        @-webkit-keyframes fadeout {
-            from {bottom: 30px; opacity: 1;} 
-            to {bottom: 0; opacity: 0;}
-        }
-
-        @keyframes fadeout {
-            from {bottom: 30px; opacity: 1;} 
-            to {bottom: 0; opacity: 0;}
-        }
-    </style>
     
     <style>
         body,html{
@@ -376,33 +331,39 @@
 </head>
 <body>
 
-<div id="toast">Lesunk sekarang direbrand menjadi Vausly!</div>
+    <!-- Alert Toaster -->
+    <style>
+    #alert-toaster {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      background-color: #f0ad4e;
+      padding: 15px 20px;
+      border-radius: 5px;
+      color: white;
+      opacity: 1;
+      transition: opacity 0.7s ease-in-out;
+    }
 
-     <script>
-        function getQueryParams() {
-            let params = {};
-            let queryString = window.location.search.substring(1);
-            let regex = /([^&=]+)=([^&]*)/g;
-            let match;
-            while (match = regex.exec(queryString)) {
-                params[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
-            }
-            return params;
-        }
+    #alert-toaster.hide {
+      opacity: 0;
+    }
+  </style>
 
-        function showToast() {
-            let toast = document.getElementById("toast");
-            toast.className = "show";
-            setTimeout(function() { toast.className = toast.className.replace("show", ""); }, 7000);
-        }
+    <div id="alert-toaster">Lesunk telah direbrand menjadi Vausly!</div>
 
-        document.addEventListener("DOMContentLoaded", function() {
-            let queryParams = getQueryParams();
-            if (queryParams['redirect_source'] === 'example.com') {
-                showToast();
-            }
-        });
-    </script>
+  <script>
+    const queryString = window.location.search;
+    const redirectSourceParam = new URLSearchParams(queryString).get('redirect_source');
+
+    if (redirectSourceParam === 'bio.lesunk.com') {
+      setTimeout(() => {
+        const alertToaster = document.getElementById('alert-toaster');
+        alertToaster.classList.add('hide');
+      }, 7000); // 7 detik
+    }
+  </script>
     
 <div class="min-h-full flex-h-center" id="background_div">
     <input type="hidden" value="https://lesunk.tips" id="app-url">

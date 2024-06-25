@@ -333,31 +333,91 @@
 
     <!-- Alert Toaster -->
     <style>
-        /* Style dari kode open source, disesuaikan dengan alert toaster */
-        #alert-toaster {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          z-index: 9999;
-          background-color: #dff0d8; /* Warna latar belakang info */
-          padding: 15px 20px;
-          border-radius: 5px;
-          color: #3c763d; /* Warna teks info */
-          opacity: 1;
-          transition: opacity 0.7s ease-in-out;
-          border: 1px solid #ddd; /* Garis pada kotak alert */
-        }
-    
-        #alert-toaster.hide {
-          opacity: 0;
-        }
-    
-        #alert-toaster .close-button {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          cursor: pointer;
-        }
+        /* Import Google font - Poppins (Optional) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Font family dari style open source (sesuaikan jika perlu) */
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Variabel warna dari style open source (sesuaikan jika perlu) */
+:root {
+  --dark: #34495E;
+  --light: #ffffff;
+  --info: #3498DB;
+}
+
+.toast {
+  width: 400px; /* Sesuaikan lebar alert toaster */
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  border-radius: 4px;
+  padding: 16px 17px;
+  margin-bottom: 10px;
+  background: var(--light);
+  justify-content: space-between;
+  /* Animasi dari style open source (sesuaikan jika perlu) */
+  animation: show_toast 0.3s ease forwards;
+}
+
+/* Animasi dari style open source (sesuaikan jika perlu) */
+@keyframes show_toast {
+  0% {
+    transform: translateX(100%);
+  }
+  40% {
+    transform: translateX(-5%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+.toast.info::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  /* Gunakan warna info dari style open source */
+  background: var(--info);
+  animation: progress 5s linear forwards;
+}
+
+/* Animasi dari style open source (sesuaikan jika perlu) */
+@keyframes progress {
+  100% {
+    width: 0%;
+  }
+}
+
+.toast.info .column i {
+  font-size: 1.75rem;
+  /* Gunakan warna info dari style open source */
+  color: var(--info);
+}
+
+.toast.info .column span {
+  font-size: 1.07rem;
+  margin-left: 12px;
+}
+
+/* Hapus selector yang tidak diperlukan (sesuaikan jika perlu) */
+.toast i:last-child,
+.buttons,
+.btn {
+  display: none;
+}
+
       </style>
 
     <div id="alert-toaster">Lesunk telah direbrand menjadi Vausly!

@@ -330,6 +330,99 @@
 
 </head>
 <body>
+
+    <!-- Toaster -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .toast {
+            visibility: hidden;
+            max-width: 50%;
+            margin: 0 auto;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            position: fixed;
+            z-index: 1;
+            left: 0; right: 0;
+            bottom: 30px;
+            font-size: 17px;
+            white-space: nowrap;
+        }
+        .toast #message {
+            padding: 16px;
+        }
+        .toast #close-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            color: #fff;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .toast #progress {
+            height: 5px;
+            background: #4caf50;
+            width: 100%;
+            border-radius: 0 0 5px 5px;
+            animation: decreaseWidth 5s linear forwards;
+        }
+        @keyframes decreaseWidth {
+            from { width: 100%; }
+            to { width: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toast" class="toast">
+    <button id="close-btn">&times;</button>
+    <div id="message">Hello world!</div>
+    <div id="progress"></div>
+</div>
+
+<script>
+    function getQueryParams() {
+        const params = {};
+        window.location.search.substring(1).split('&').forEach(pair => {
+            const [key, value] = pair.split('=');
+            params[decodeURIComponent(key)] = decodeURIComponent(value);
+        });
+        return params;
+    }
+
+    function showToast(message, duration = 5000) {
+        const toast = document.getElementById('toast');
+        const closeBtn = document.getElementById('close-btn');
+        const progress = document.getElementById('progress');
+        const msgElement = document.getElementById('message');
+
+        msgElement.textContent = message;
+        toast.style.visibility = 'visible';
+
+        const timeout = setTimeout(() => {
+            toast.style.visibility = 'hidden';
+        }, duration);
+
+        closeBtn.onclick = () => {
+            toast.style.visibility = 'hidden';
+            clearTimeout(timeout);
+        };
+
+        progress.style.animationDuration = `${duration}ms`;
+    }
+
+    window.onload = () => {
+        const params = getQueryParams();
+        if (params.redirect_source) {
+            showToast('Hello world!', 5000);
+        }
+    };
+</script>
     
 <div class="min-h-full flex-h-center" id="background_div">
     <input type="hidden" value="https://lesunk.tips" id="app-url">

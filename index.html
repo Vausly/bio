@@ -330,60 +330,61 @@
 
 </head>
 <body>
-
-    <!-- Toaster -->
-    <style>
-        .kotak {
-          position: top;
-          background-color: #3349FF;
-          border: 2px solid blue;
-          border-radius: 10px;
-          padding: 10px;
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-          display: flex; /* Membuat kotak menyesuaikan panjang teks */
-          align-items: center; /* Menjaga teks dan tombol close berada di baris yang sama */
-          justify-content: space-between; /* Menjaga jarak antara teks dan tombol close */
-          max-width: 320px;
-        }
-    
-        .isi-kotak {
-          color: white;
-          font-family: Arial;
-        }
-    
-        .btn-close {
-          width: 25px; /* Memperbesar tombol close */
-          height: 35px; /* Memperbesar tombol close */
-          font-size: 30px; /* Memperbesar ikon close */
-          border: none;
-          background-color: transparent;
-          cursor: pointer;
-          flex-shrink: 0; /* Mencegah tombol mengecil jika teks panjang */
-          margin-left: 10px; /* Memberi ruang antara teks dan tombol close */
-        }
-    
-        .btn-close:hover {
-          color: white;
-        }
-      </style>
-
-<div class="kotak">
-    <div class="isi-kotak">
-      Lesunk telah direbrand menjadi Vausly!
-    </div>
-    <button type="button" class="btn-close">&times;</button>
-  </div>
-
-  <script>
-    const kotak = document.querySelector('.kotak');
-    const btnClose = document.querySelector('.btn-close');
-
-    btnClose.addEventListener('click', () => {
-      kotak.style.display = 'none';
-    });
-  </script>
     
 <div class="min-h-full flex-h-center" id="background_div">
+
+        <!-- Toaster -->
+        <style>
+            .kotak {
+              position: top;
+              background-color: #3349FF;
+              border: 2px solid blue;
+              border-radius: 10px;
+              padding: 10px;
+              box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+              display: flex; /* Membuat kotak menyesuaikan panjang teks */
+              align-items: center; /* Menjaga teks dan tombol close berada di baris yang sama */
+              justify-content: space-between; /* Menjaga jarak antara teks dan tombol close */
+              max-width: 320px;
+            }
+        
+            .isi-kotak {
+              color: white;
+              font-family: Arial;
+            }
+        
+            .btn-close {
+              width: 25px; /* Memperbesar tombol close */
+              height: 35px; /* Memperbesar tombol close */
+              font-size: 30px; /* Memperbesar ikon close */
+              border: none;
+              background-color: transparent;
+              cursor: pointer;
+              flex-shrink: 0; /* Mencegah tombol mengecil jika teks panjang */
+              margin-left: 10px; /* Memberi ruang antara teks dan tombol close */
+            }
+        
+            .btn-close:hover {
+              color: white;
+            }
+          </style>
+    
+    <div class="kotak">
+        <div class="isi-kotak">
+          Lesunk telah direbrand menjadi Vausly!
+        </div>
+        <button type="button" class="btn-close">&times;</button>
+      </div>
+    
+      <script>
+        const kotak = document.querySelector('.kotak');
+        const btnClose = document.querySelector('.btn-close');
+    
+        btnClose.addEventListener('click', () => {
+          kotak.style.display = 'none';
+        });
+      </script>
+
     <input type="hidden" value="https://lesunk.tips" id="app-url">
      <input type="hidden" value="null" id="is-featured">
      <input type="hidden" value="" id="enabled_subscribers">

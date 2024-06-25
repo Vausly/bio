@@ -333,9 +333,6 @@
 
     <!-- Toaster -->
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
         .toast {
             visibility: hidden;
             max-width: 50%;
@@ -350,6 +347,12 @@
             bottom: 30px;
             font-size: 17px;
             white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
         }
         .toast #message {
             padding: 16px;
@@ -401,14 +404,14 @@
         const msgElement = document.getElementById('message');
 
         msgElement.textContent = message;
-        toast.style.visibility = 'visible';
+        toast.classList.add('show');
 
         const timeout = setTimeout(() => {
-            toast.style.visibility = 'hidden';
+            toast.classList.remove('show');
         }, duration);
 
         closeBtn.onclick = () => {
-            toast.style.visibility = 'hidden';
+            toast.classList.remove('show');
             clearTimeout(timeout);
         };
 
@@ -418,7 +421,7 @@
     window.onload = () => {
         const params = getQueryParams();
         if (params.redirect_source) {
-            showToast('Lesunk telah direbrand menjadi Vausly!', 5000);
+            showToast('Hello world!', 5000);
         }
     };
 </script>

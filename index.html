@@ -333,8 +333,8 @@
 
     <!-- Alert Toaster -->
     <style>
-        /* Import Google font - Poppins (Optional) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+ /* Import Font Awesome (opsional) */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 
 * {
   margin: 0;
@@ -348,12 +348,17 @@
 :root {
   --dark: #34495E;
   --light: #ffffff;
+  --success: #0ABF30;
+  --error: #E24D4C;
+  --warning: #E9BD0C;
   --info: #3498DB;
 }
 
-.toast {
+#alert-toaster {
   width: 400px; /* Sesuaikan lebar alert toaster */
-  position: relative;
+  position: fixed;
+  top: 30px; /* Sesuaikan posisi */
+  right: 20px; /* Sesuaikan posisi */
   overflow: hidden;
   list-style: none;
   border-radius: 4px;
@@ -381,7 +386,7 @@
   }
 }
 
-.toast.info::before {
+#alert-toaster.info::before {
   position: absolute;
   content: "";
   height: 3px;
@@ -400,22 +405,21 @@
   }
 }
 
-.toast.info .column i {
+#alert-toaster .column i {
   font-size: 1.75rem;
   /* Gunakan warna info dari style open source */
   color: var(--info);
 }
 
-.toast.info .column span {
+#alert-toaster .column span {
   font-size: 1.07rem;
   margin-left: 12px;
 }
 
-/* Hapus selector yang tidak diperlukan (sesuaikan jika perlu) */
-.toast i:last-child,
-.buttons,
-.btn {
-  display: none;
+.close-button {
+  display: inline-block; /* Menampilkan tombol close */
+  color: #aeb0d7;
+ 
 }
 
       </style>

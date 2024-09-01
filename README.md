@@ -2,4 +2,4 @@
 
 This is a bio link page for Vausly (formerly Lesunk)
 
-Visit https://bio.lesunk.com for more details
+Visit https://bio.vausly.com for more details
